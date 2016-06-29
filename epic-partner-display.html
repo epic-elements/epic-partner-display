@@ -1,0 +1,101 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="epic-partner-display">
+    <template>
+        <style>
+            :host {
+                display: block;
+                background: white;
+            }
+
+            h2 {
+                text-align: center;
+                margin: 0;
+                padding: 1em 0;
+            }
+
+            .partnerDisplay {
+                display: block;
+                background: white;
+                width: 90%;
+                margin: 0 auto;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-flex-flow: row nowrap;
+                -ms-flex-flow: row nowrap;
+                flex-flow: row nowrap;
+                -webkit-justify-content: space-between;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+                padding-bottom: 3em;
+                max-width: 1080px
+            }
+
+            .partnerDisplay a {
+                max-width: 20%;
+                padding: 10px;
+                width: 336px;
+                display: inline-block
+            }
+
+            .partnerDisplay a img {
+                width: 100%;
+                height: 100%
+            }
+
+            @media screen and (max-width: 768px) {
+                .partnerDisplay {
+                    flex-flow: column nowrap;
+                }
+                .partnerDisplay a {
+                    width: 90%;
+                    max-width: none;
+                    margin: 0 auto;
+                    padding: 5%;
+                }
+            }
+        </style>
+
+        <content></content>
+
+        <template is="dom-if" if="[[header]]">
+            <h2 id="imageGalleryTitle">[[header]]</h2>
+        </template>
+
+        <div class="partnerDisplay">
+            <template is="dom-repeat" items="[[elements]]">
+                <a href="[[item.href]]"><img src="[[item.src]]" /></a>
+            </template>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'epic-partner-display',
+
+            properties: {
+                /*
+                  Optional
+                */
+                header: {
+                    type: String,
+                    value: function() {
+                        return '';
+                    },
+                },
+                /**
+                  An array of href, src objects
+                */
+                elements: {
+                    type: Array,
+                    value: function() {
+                        return [];
+                    }
+                }
+            },
+
+        });
+    </script>
+</dom-module>
