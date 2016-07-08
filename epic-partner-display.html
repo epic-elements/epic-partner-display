@@ -48,6 +48,8 @@
 
             @media screen and (max-width: 768px) {
                 .partnerDisplay {
+                    -webkit-flex-flow: column nowrap;
+                    -ms-flex-flow: column nowrap;
                     flex-flow: column nowrap;
                 }
                 .partnerDisplay a {
@@ -58,7 +60,7 @@
                     text-align: center;
                 }
                 .partnerDisplay a img {
-                  max-width: 200px;
+                    max-width: 200px;
                 }
             }
         </style>
@@ -71,7 +73,7 @@
 
         <div class="partnerDisplay">
             <template is="dom-repeat" items="[[elements]]">
-                <a href="[[item.href]]" target="_blank"><img src="[[item.src]]" alt="[[item.title]]"/></a>
+                <a href="[[item.href]]" target="_blank"><img src="[[item.src]]" alt="[[item.title]]" /></a>
             </template>
         </div>
     </template>
